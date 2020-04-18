@@ -3,7 +3,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>POMODORO</title>
+<title>PoMoDoRo</title>
 
 
 <!-- FONTS-->
@@ -12,6 +12,8 @@
 <!-- CSS stylsheets-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="css/styles.css">
+
+<link href="/static/favicon.ico" rel="icon">
 
 <!-- Font Awesome-->
 <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
@@ -35,6 +37,7 @@
 
             <a class="navbar-brand" href="">pomodoro</a>
          </div>
+         <main>{% block main %}{% endblock %}</main>
          <ul class="nav navbar-nav">
            <li class="active">
                <a href="/">Home</a>
