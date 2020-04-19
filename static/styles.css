@@ -1,0 +1,47 @@
+body{
+  font-family: "Ubuntu";
+  text-align:center;
+}
+h1
+{
+  font-family: "Fugaz One";
+}
+.big-heading{
+  font-family: "Fugaz One";
+  font-size:3rem;
+  line-height:15;
+
+}
+.container-fluid{
+  padding:5% 7%;
+}
+.colored-section{
+  background-color: #ffb6b6;
+  color:#fde2e2;
+}
+
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-item{
+  padding: 0 18px;
+
+}
+
+.nav-link{
+  font-size:1.2rem;
+  font-family:"Ubuntu";
+}
+
+.row{
+    padding-top:29%;
+    padding-bottom:7%;
+    padding-left:15%;
+    font-family: "Indie FLower";
+    font-size:3rem;
+
+
+}
