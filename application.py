@@ -37,7 +37,12 @@ def login():
     '''log-in page'''
     #forget any user id
     session.clear()
-    return apology("Doesn't exist yet")
+
+    if request.method == "POST": # request recieved by submitting a form
+        return apology("Doesn't exist yet")
+
+    else: # route reached via link or address bar
+        return render_template("login.html")
 
 
 @app.route("/register", methods=["GET","POST"])
