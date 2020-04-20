@@ -38,22 +38,80 @@ def login():
     #forget any user id
     session.clear()
 
-    if request.method == "POST": # request recieved by submitting a form
-        return apology("Doesn't exist yet")
+    if request.method == "POST": # request recieved by submitting the login form
 
-    else: # route reached via link or address bar
+        # Ensure username was submitted
+        if not request.form.get("username"):
+            return apology("must provide username", 403)
+
+        # Ensure password was submitted
+        elif not request.form.get("password"):
+            return apology("must provide password", 403)
+
+        # Query database for username
+        rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
+
+        # Ensure username exists and password is correct
+        if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
+            return apology("invalid username and/or password", 403)
+
+        # Remember which user has logged in
+        session["user_id"] = rows[0]["id"]
+
+        # Redirect user to home page
+        return redirect("/taskpage")
+
+    else: # route reached via link, address bar or redirect
         return render_template("login.html")
 
 
 @app.route("/register", methods=["GET","POST"])
 def register():
     ''' register page '''
-    return apology("Sign-Up not functional")
+    session.clear()
 
-@app.route("/PomoDoro", methods=["GET","POST"])
+    if request.method == "POST":
+
+         # Ensure username was submitted
+        if not request.form.get("username"):
+            return apology("must provide username", 403)
+
+        # Ensure password was submitted
+        elif not request.form.get("password"):
+            return apology("must provide password", 403)
+
+        # Query database for username
+        rows = db.execute("SELECT * FROM users WHERE username = :username",username=request.form.get("username"))
+
+        # Ensure username is available
+        if len(rows) == 1:
+            return apology("Username Already Taken, Please try again")
+
+        # Password authentication
+        if not request.form.get("password"):
+            return apology("must enter password", 400)
+
+        elif request.form.get("password") != request.form.get("confirmation"):
+            return apology("Passwords do not match.", 400)
+
+        hsh = generate_password_hash(request.form.get("password"))
+
+        db.execute("INSERT INTO users(username, hash) VALUES (:username, :hasher);", username=request.form.get("username"), hasher=hsh)
+
+
+        # Redirect user to login page
+        return redirect("/login")
+
+
+    else:
+        return render_template("register.html")
+
+
+
+@app.route("/taskpage", methods=["GET","POST"])
 @login_required
 def taskpage():
-    return apology("Not Found")
+    return render_template("taskpage.html")
 
 
 def errorhandler(e):
@@ -71,6 +129,10 @@ for code in default_exceptions:
 
 
 
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run(host = '0.0.0.0', port = 5000)
 
 
 

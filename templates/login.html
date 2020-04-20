@@ -1,10 +1,23 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Log-In
+    : Log In
 {% endblock %}
 
-{% block body %}
+{% block main %}
     <form action="/login" method="post">
+
         <! make username field with name=username, password field with name=password, and a submit button called Log-In>
+
+        <div class="">
+            <input type="text" autofocus name="username" placeholder="username" class="">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="password" class="">
+        </div>
+        <div>
+            <button class="" type="submit">Log In</button>
+        </div>
+
     </form>
+{% endblock %}
