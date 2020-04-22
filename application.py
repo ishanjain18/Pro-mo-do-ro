@@ -114,6 +114,19 @@ def taskpage():
     return render_template("taskpage.html")
 
 
+@app.route("/logout")
+def logout():
+    """Log user out"""
+
+    # Forget any user_id
+    session.clear()
+
+    
+
+    # Redirect user to login form
+    return redirect("/")
+
+
 def errorhandler(e):
     """Handle error"""
     if not isinstance(e, HTTPException):
@@ -129,17 +142,6 @@ for code in default_exceptions:
 
 
 
-
 if __name__ == '__main__':
     app.debug = True
     app.run(host = '0.0.0.0', port = 5000)
-
-
-
-
-
-
-
-
-
-

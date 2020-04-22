@@ -19,7 +19,7 @@
 <!-- Font Awesome-->
 <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
-<!-- Bootstrap Scropts -->
+<!-- Bootstrap Scripts -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -35,39 +35,50 @@
          <div class="navbar-header">
 
 
-            <a class="navbar-brand" href="">pomodoro</a>
+            <a class="navbar-brand" href="/">pomodoro</a>
          </div>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
-             <span class="navbar-toggler-icon"></span>
-         </button>
-           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-         <ul class="nav navbar-nav ml-auto">
-           <li class="nav-item">
-             <a class="nav-link" href="/">Home</a>
-           </li>
-            <li class="nav-item">
-              <a  class="nav-link"href="/register">Sign Up</a>
-            </li>
-            <li class="nav-item">
-               <a  class="nav-link" href="/login">Login</a>
+         <label>
+             <input type="checkbox">
+             <span class="menu">
+                  <span class="hamburger"></span>
+             </span>
+           <ul class="nav-items">
+             <li class="nav-item">
+               <a class="nav-link" href="/">Home</a>
+             </li>
+            {% if session.user_id %}
 
-            </li>
-         </ul>
-       </div>
+            <!--everything inside this if statement displays only is user is logged in-->
+            <li class="nav-item">
+               <a  class="nav-link" href="/logout">Logout</a>
+             </li>
+
+
+             {% endif %}
+
+            <li class="nav-item">
+               <a  class="nav-link"href="/register">Sign Up</a>
+             </li>
+             <li class="nav-item">
+               <a  class="nav-link" href="/login">Login</a>
+             </li>
+           </ul>
+        </label>
        </nav>
        <!-- Main line-->
 
-
+        <div class="pic">
+           <center>
+            <img src="static/tomato.png">
+           </center
+        </div>
         <!--Boostrap used to divide the row into parts for ez scaling-->
         <div class="row">
             <div class="col-xs-6 col-md-10">
-                {% block main %}{% endblock %}
+                I play pokemon go everyday and have gay fantasies{% block main %}{% endblock %}
             </div>
 
         </div>
-
-
-
 
 
     </section>
