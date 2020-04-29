@@ -57,6 +57,7 @@ def login():
 
         # Remember which user has logged in
         session["user_id"] = rows[0]["id"]
+        session["username"] = rows[0]["username"]
 
         # Redirect user to home page
         return redirect("/taskpage")
@@ -111,8 +112,45 @@ def register():
 @app.route("/taskpage", methods=["GET","POST"])
 @login_required
 def taskpage():
-    return render_template("taskpage.html")
 
+    """define tasks as a select query from the tasks table
+        containing the tasks in a list format"""
+    tasks=[]
+    foo = db.execute("SELECT * FROM tasks WHERE username = :username", username=session["username"])
+    for i in foo:
+        tasks.append(i["task"])
+
+    session["taskcount"] = len(tasks)
+    session["tasks"] = tasks
+
+    tasks = enumerate(tasks)
+
+
+    return render_template("taskpage.html", tasks=tasks, count=session["taskcount"],)
+
+@app.route("/add", methods=["GET","POST"])
+@login_required
+def add():
+    if request.method == "POST":
+        task = request.form.get("task")
+        if not task:
+            return apology("Enter a Task")
+        db.execute("INSERT INTO tasks(username, task) VALUES (:username, :task);", username=session["username"], task=task)
+        return redirect("/taskpage")
+
+@app.route("/remove", methods=["GET", "POST"])
+@login_required
+def remove():
+    if request.method == "POST":
+
+        for i in range(session["taskcount"]):
+
+            foo = "check"+str(i)
+            bar = "removed"+str(i)
+            if request.form.get(foo):
+                db.execute("DELETE FROM tasks WHERE task=:task;", task=session["tasks"][i])
+
+    return redirect("/taskpage")
 
 @app.route("/logout")
 def logout():
@@ -120,9 +158,6 @@ def logout():
 
     # Forget any user_id
     session.clear()
-
-    
-
     # Redirect user to login form
     return redirect("/")
 
@@ -137,9 +172,6 @@ def errorhandler(e):
 # Listen for errors
 for code in default_exceptions:
     app.errorhandler(code)(errorhandler)
-
-
-
 
 
 if __name__ == '__main__':

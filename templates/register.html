@@ -5,22 +5,28 @@
 {% endblock %}
 
 {% block main %}
-    <form action="/register" method="post">
+<div class="bg-img">
+    <form action="/register" method="post" class="container">
+      <div class="block1">
+       <div class="input-container1">
+    <i class="fa fa-user icon"></i>
+    <input class="input-field" type="text" placeholder="Username" name="username">
+  </div>
 
+  <div class="input-container2">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="text" placeholder="password" name="password">
+  </div>
 
-        <div class="">
-            <input type="text" autofocus name="username" placeholder="Enter a Username" class="">
-        </div>
+  <div class="input-container3">
+    <i class="fa fa-key icon"></i>
+    <input class="input-field" type="password" placeholder="Re-enter Password" name="confirmation">
+  </div>
+
         <div>
-            <input type="password" name="password" placeholder="Enter a Password" class="">
+            <button class="btn btn-outline-light btn-lg download-button" type="submit">Register</button>
         </div>
-        <div>
-            <input type="password" name="confirmation" placeholder="Enter Password Again" class="">
         </div>
-
-        <div>
-            <button class="" type="submit">Register</button>
-        </div>
-
     </form>
+</div>
 {% endblock %}

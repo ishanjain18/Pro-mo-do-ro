@@ -24,6 +24,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
+<!--JAVASCRIPT-->
+<script src="demo.js"></script>
+<script src="main.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/path/to/parallax.js"></script>
 <!--Front page-->
 
 </head>
@@ -66,24 +72,83 @@
         </label>
        </nav>
        <!-- Main line-->
+    <header>
 
-        <div class="pic">
+        <div class="lax" data-lax-translate-y="0 0, 400 -400" id="big">
            <center>
             <img src="static/tomato.png">
            </center
         </div>
-        <!--Boostrap used to divide the row into parts for ez scaling-->
-        <div class="row">
-            <div class="col-xs-6 col-md-10">
-                I play pokemon go everyday and have gay fantasies{% block main %}{% endblock %}
-            </div>
+    <script src="https://cdn.jsdelivr.net/npm/lax.js"> </script>
+    <script>
+        window.onload = function() {
+    	lax.setup() // init
 
+     	const updateLax = () => {
+		lax.update(window.scrollY)
+		window.requestAnimationFrame(updateLax)
+	}
+
+	window.requestAnimationFrame(updateLax)
+     }
+    </script>
+<!--fix this-->
+    <script>
+         function myFunction()
+        {
+         var col=document.getElementById("hold");
+         target.style.background="#ffcc00";
+        }
+    </script>
+
+         <!--Boostrap used to divide the row into parts for ez scaling-->
+        <div class="row" id="big">
+            <div class="col-xs-6 col-md-10">
+                The quintessential place to organise and improve your life.
+            </div>
         </div>
+
+
+    </header>
 
 
     </section>
 
 
+
+
+   <section class="green" id="content">
+    <div onscroll="myFunction()">
+     <ul class="imp">
+         <li class="scroll" data-rate="0.2" data-direction="vertical">po</li></li>
+         <li class-"hold">mo-tivate yourself</li>
+         <li class="scroll" data-rate="0.2" data-direction="vertical">doro </li>
+     </ul>
+    </div>
+   </section>
+   <script>
+       window.addEventListener('scroll', function(e){
+
+            const target=document.querySelectorAll('.scroll');
+
+
+
+            var index=0, length = target.length;
+            for(index; index<length  ; index++) {
+                var pos= window.pageYOffset * target[index].dataset.rate;
+                target[index].style.transform='translate3d(0px,'+pos+'px, 0px)';
+            }
+
+
+
+       });
+    </script>
+    <section class="white" id="content">
+     <div2>
+
+      <p>As the name suggests we have implemented the concept of Pomodoro into a task manager that enables the user to monitor his time efficiently by completing each task within a 25 minutes deadline.</p>
+    </div2>
+   </section>
 
 </body>
 </html>
