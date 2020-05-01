@@ -7,42 +7,48 @@
 {% block main %}
   <section class="bigbrain">
     <div>
-      Add a new Task:
+      <h3>Add a new Task:</h3>
         <form action="/add" method="post">
-          <input name="task" type="text" placeholder="Enter a Task">
-          <button type="submit">Add Task</button>
+          <input class="input-field2" name="task" type="text" placeholder="Enter a Task">
+          <button class="btn3" type="submit">Add Task</button>
         </form>
     </div>
     <br>
+
   <h2>TASKS</h2>
       <br>
       <div>
           <form action="/remove" method="post">
-            <table class="table table-hover table-primary">
-              <tr></tr>
+            <table class="content-table table-hover table-primary">
+              <thead>
+              <tr>
                 <th>:)</th>
                 <th>Task</th>
                 <th>Pomodoro</th>
                 <th>Timer</th>
 
               </tr>
+              </thead>
             {% for index, task in tasks %}
+              <tbody class="ooga">
                 <tr>
                   <td><input type="checkbox" name="check{{index}}"></td>
                   <td><span name="removed{{index}}">{{ task }}</span></td>
-                  <td><button type="button" name="pomostart{{index}}" onclick="timeractivate{{index}}()">Start Pomodoro</td>
+                  <td><button class="btn2" type="button" name="pomostart{{index}}" onclick="timeractivate{{index}}()">Start Pomodoro</td>
                   <td><p id="timer{{index}}">--</p></td>
                 </tr>
+              </tbody>
             {% endfor %}
            </table>
 
 {% for i in range(0, count) %}
+
                   <script>
 
 
                         function timeractivate{{i}}(){
                             var d = new Date();
-                            var countDownDate = d.getTime() + 1500000;
+                            var countDownDate = d.getTime() + 10000;
 
 
                           // Update the count down every 1 second
@@ -68,6 +74,10 @@
                             if (distance < 0) {
                               clearInterval(x);
                               document.getElementById("timer{{i}}").innerHTML = "COMPLETED";
+                              let src = '/static/sound.mp3';
+                              let audio = new Audio(src);
+                              audio.play();
+                              alert("PomoDoro Complete, Start Another!")
                             }
                           }, 1000);
                         }
@@ -75,7 +85,7 @@
                 </script>
 {% endfor %}
 
-          <button type="submit">Remove</button>
+          <button class="btn4" type="submit">Remove Selected tasks</button>
           </form>
       <br><br><br>
 

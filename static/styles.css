@@ -4,7 +4,6 @@
 }
 
 
-
 body{
   font-family: "Ubuntu";
   text-align:center;
@@ -12,6 +11,22 @@ body{
 
 
 
+
+}
+h2{
+
+  font-family:"Montserrat";
+  color:#aacfcf;
+  font-weight:bold;
+  font-size:3rem;
+
+}
+
+
+h3{
+  font-family:"Indie Flower";
+  color:#aacfcf;
+  font-size:1.5em;
 
 }
 
@@ -91,6 +106,46 @@ body{
   opacity: 1;
   transition: 0s
 }
+
+
+.btn2{
+  background-color: #679b9b;
+  color: white;
+  border: 2px solid #679b9b;
+  transition-duration: 0.4s;
+  border-radius:15px;
+}
+
+.btn2:hover{
+   background-color: white;
+   color:#679b9b;
+}
+
+.btn4{
+  margin-top:1%;
+}
+.btn3,.btn4{
+  transition-duration: 0.4s;
+  background-color: white;
+  color:white;
+   border: 2px solid #ffb6b6;
+   border-radius:15px;
+}
+
+.btn3:hover{
+  background-color: #ffb6b6;
+  color: white;
+}
+
+.btn4:hover{
+  background-color: #ffb6b6;
+  color: white;
+}
+
+
+
+
+
 h1
 {
   font-family: "Fugaz One";
@@ -128,9 +183,11 @@ h1
 
 .white{
   color:#aacfcf;
-  font-family:"Fugaz One";
+  font-family:"Baloo Bhaina 2";
   font-size:3rem;
+
 }
+
   section{
     height:100%;
   }
@@ -163,8 +220,49 @@ div2,div3{
 
 }
 
+/*Table styling*/
 
 
+.content-table{
+  border-collapse:collapse;
+  font-size:0.9em;
+  width:100%;
+  border-radius:5px 5px 0 0;
+  overflow:hidden;
+  box-shadow:0 0 20px rgba(0,0,0,0.15);
+
+
+}
+
+.content-table thead tr{
+  background-color:#679b9b;
+  color:#ffffff;
+  text-align:left;
+  font-weight:bold;
+}
+
+.content-table th {
+   text-align:center;
+}
+.content-table td{
+  padding:12px 15px;
+  text-align:center;
+}
+.content-table tbody tr{
+  border-bottom:1px solid #dddddd;
+}
+
+.ooga:nth-of-type(even) {
+  background-color:#f3f3f3;
+}
+.ooga:last-of-type{
+  border-bottom: 2px solid #679b9b;
+}
+
+
+.ooga{
+  background-color:#fff;
+}
 /* THIS IS THE HAMBURGER MENU */
 .menu{
   position:absolute;
@@ -310,6 +408,13 @@ li{
   border-radius:15px;
   border: 3px solid pink;
   padding:2%;
+
+}
+
+.input-field2{
+  border-radius:15px;
+  border: 3px solid pink;
+
 
 }
 ::placeholder{
