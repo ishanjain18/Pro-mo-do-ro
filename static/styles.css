@@ -170,20 +170,59 @@ h1
   color:#fde2e2;
 
 }
-
+/*The annoying section*/
 .green{
-  background-color:#679b9b;
-  margin:0;
-  height:100vh;
+   background-image: url(page2bg.jpg);
+
+
+
+  background-position: center;
+
+
+  position: relative;
+
   font-size:5em;
   font-family:"Montserrat";
   font-weight:bold;
   color:#fde2e2;
+  z-index:0;
+  height:200vh;
+  padding-top:20%;
   }
+
+   .imp{
+    list-style-type:none;
+    padding:0;
+    margin:0;
+    display:grid;
+    grid-template-columns:repeat(3,auto);
+    justify-content:center;
+    align-items: center;
+
+
+  }
+  .testimonial-carousel{
+    font-size:2rem;
+    padding-top:20%;
+  }
+
+  .hold{
+   margin-top:200%;
+  }
+
+  .lolman{
+    background-color:#ffcc00;
+   z-index:1;
+  }
+
+   section{
+    height:100%;
+  }
+
+
 
 .white{
   color:#aacfcf;
-
   font-family:"Baloo Bhaina 2";
   font-size:2.5em;
   text-align:center;
@@ -208,20 +247,7 @@ h1
 
 
 
-  section{
-    height:100%;
-  }
-  .imp{
-    list-style-type:none;
-    padding:0;
-    margin:0;
-    display:grid;
-    grid-template-columns:repeat(3,auto);
-    justify-content:center;
-    align-items: center;
-    height:100vh;
-    padding-left:7%;
-  }
+
 
 
 
@@ -285,7 +311,7 @@ div2,div3{
 }
 
 .navbar{
-  margin-top:2%;
+  margin-top:0%;
 
 
 
