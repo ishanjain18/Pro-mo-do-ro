@@ -1,8 +1,8 @@
-*:before,
-*:after{
-  box-sizing:border-box;
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 
 body{
   font-family: "Ubuntu";
@@ -43,7 +43,7 @@ h3{
  }
 
 .bigbrain{
-  padding-top:300px;
+  padding-top:50px;
 }
 
  .fa{
@@ -183,10 +183,30 @@ h1
 
 .white{
   color:#aacfcf;
+
   font-family:"Baloo Bhaina 2";
-  font-size:3rem;
+  font-size:2.5em;
+  text-align:center;
+  padding:3em;
+
 
 }
+
+
+
+   .bigboi{
+     width:100%;
+     background:red;
+     height: 5px;
+     display:block;
+     margin-top:20px;
+       }
+
+
+
+
+
+
 
   section{
     height:100%;
@@ -263,121 +283,75 @@ div2,div3{
 .ooga{
   background-color:#fff;
 }
-/* THIS IS THE HAMBURGER MENU */
-.menu{
-  position:absolute;
-  right:-100px;
-  top:-100px;
-  z-index:100;
-  width:200px;
-  height:200px;
-  background-color:#fff;
-  border-radius:50% 50% 50% 50%;
-  box-shadow:0 0 0 0 #fff, 0 0 0 0 #fff;
-  cursor:pointer;
-  transition:0.5s ease-in-out;
+
+.navbar{
+  margin-top:2%;
+
+
+
 }
-.hamburger{
-  position:absolute;
-  top:60%;
-  left:40%;
-  width:30px;
-  height:2px;
-  background-color:#000;
-  display:block;
+
+
+#bottom{
+  animation:rectangle 1.5s infinite;
   transform-origin:center;
-  transition:0.5s ease-in-out;
-
 
 }
-label .hamburger:after,label.hamburger:before{
-  content:"";
-  position:absolute;
-  display:block;
-  width:100%;
-  height:100%;
-  background-color:#000;
+#top{
+  animation:rect 1.5s infinite;
+  transform-origin:center;
+}
 
+#tick{
+  animation:rec 1.5s infinite;
+  transform-origin:center;
 
 }
 
-label.hamburger:before{
-  top:-10px;
+@keyframes rec{
+   from {
+      transform: rotate(0deg);
+        }
+    to {
 
-}
-label.hamburger:after{
-  bottom: -10px;
 
-
-}
-
-label input{
-  display:none;
-}
-
-label input:checked + .menu{
-  box-shadow:0 0 0 100vw #fff, 0 0 0 100vh #fff;
-  border-radius:0;
-}
-
-label input:checked+  .menu .hamburger{
-  transform:rotate(45deg);
-}
-
-label input:checked + .menu .hamburger:after{
-  transform:rotate(90deg);
-  top: 0;
-}
-
-label input:checked + .menu+ul{
-  opacity:1;
-}
-
-/*postion was absolute here*/
-label ul{
-    z-index:200;
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    opacity:0;
-    transition:0.25s 0s ease-in-out;
+      transform: rotate(360deg);
+    }
   }
-label a{
-  margin-bottom:1em;
-  font-size:18px;
-  display:block;
-  color:#000;
-  text-decoration:none;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  text-align:center;
-  padding:12px 36px;
-  font-weight:bold;
-  transition:0.5s ease-in-out;
 
+
+@keyframes rectangle{
+   from{
+     transform: rotatateX(0deg);
+   }
+   to{
+     transform:rotateX(360deg);
+   }
 }
 
-label a:hover{
-  background-color:teal;
-  color: #fff;
-  letter-spacing:3px;
+@keyframes rect{
+  from{
+    transform:rotateX(0deg);
+  }
+  to{
+    transform:rotateX(360deg);
+  }
 }
 
-
-li{
-  list-style-type:none;
+.nav-items{
+  display:flex;
+  justify-content:right;
+  list-style:none;
+  margin-right:1%;
 }
-
-
-/* END OF HAMBURGER  */
 
 .lax{
-  padding-top:5%;
+  padding-top:0%;
 }
 
 
 .navbar{
+
 
 }
 .navbar-brand {
@@ -390,6 +364,8 @@ li{
 
 .nav-item{
   padding: 0 18px;
+  font-family:"Roboto Condensed";
+
 
 }
  .nav-items{
@@ -463,3 +439,11 @@ input.visited {
 #form{
   background-color:#fff;
 }
+
+
+
+
+
+
+/* pricing table */
+

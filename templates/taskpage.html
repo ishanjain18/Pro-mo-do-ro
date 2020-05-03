@@ -15,16 +15,25 @@
     </div>
     <br>
 
+
+
+
+
+
+
+
+
   <h2>TASKS</h2>
       <br>
       <div>
-          <form action="/remove" method="post">
+
             <table class="content-table table-hover table-primary">
               <thead>
               <tr>
                 <th>:)</th>
                 <th>Task</th>
                 <th>Pomodoro</th>
+                <th>Break</th>
                 <th>Timer</th>
 
               </tr>
@@ -34,7 +43,8 @@
                 <tr>
                   <td><input type="checkbox" name="check{{index}}"></td>
                   <td><span name="removed{{index}}">{{ task }}</span></td>
-                  <td><button class="btn2" type="button" name="pomostart{{index}}" onclick="timeractivate{{index}}()">Start Pomodoro</td>
+                  <td><button class="btn2" id="pbtn{{index}}" type="button" name="pomostart{{index}}" onclick="pomoactivate{{index}}()">Start Pomodoro</td>
+                  <td><button class="btn2" id="bbtn{{index}}" type="button" name="breakstart{{index}}"  onclick="breakactivate{{index}}()">Start Break</td>
                   <td><p id="timer{{index}}">--</p></td>
                 </tr>
               </tbody>
@@ -43,14 +53,97 @@
 
 {% for i in range(0, count) %}
 
-                  <script src="static/timer.js">
+                  <script>
+                  function pomoactivate{{i}}()
+                  {
+                      var d = new Date();
+                      var countDownDate = d.getTime() + 1501000;
+                      var x;
+                      document.getElementById("bbtn{{i}}").disabled = true;
+                      document.getElementById("pbtn{{i}}").disabled = true;
+
+                      // Update the count down every 1 second
+                          x = setInterval(function() {
+
+
+                              // Get today's date and time
+                              var now = new Date().getTime();
+
+
+
+                              // Find the distance between now and the count down date
+                              var distance = countDownDate - now;
+                              document.getElementById("timer{{i}}").innerHTML = "STARTING...";
+
+
+                              // Time calculations for days, hours, minutes and seconds
+
+                              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                              // Output the result in an element with id="timer"
+                              document.getElementById("timer{{i}}").innerHTML = minutes + "m " + seconds + "s ";
+
+                              // If the count down is over, write some text
+                              if (distance < 0) {
+                                  clearInterval(x);
+                                  document.getElementById("timer{{i}}").innerHTML = "COMPLETED";
+                                  document.getElementById("bbtn{{i}}").disabled = false;
+                                  document.getElementById("pbtn{{i}}").disabled = false;
+                                  let src = '/static/sound.mp3';
+                                  let audio = new Audio(src);
+                                  audio.play();
+                                  alert("PomoDoro Complete! Start Another!")
+                              }
+                                }, 1000);
+                            }
+
+
+                  function breakactivate{{i}}()
+                  {
+
+
+                      var d = new Date();
+                      var countDownDate = d.getTime() + 301000;
+
+
+                      // Update the count down every 1 second
+                      var x = setInterval(function() {
+
+                          // Get today's date and time
+                          var now = new Date().getTime();
+
+
+                          // Find the distance between now and the count down date
+                          var distance = countDownDate - now;
+
+
+                          // Time calculations for days, hours, minutes and seconds
+
+                          var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                          var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                          // Output the result in an element with id="timer"
+                          document.getElementById("timer{{i}}").innerHTML = minutes + "m " + seconds + "s ";
+
+                          // If the count down is over, write some text
+                          if (distance < 0) {
+                              clearInterval(x);
+                              document.getElementById("timer{{i}}").innerHTML = "COMPLETED";
+                              let src = '/static/sound.mp3';
+                              let audio = new Audio(src);
+                              audio.play();
+                              alert("Break Complete!")
+                          }
+                      }, 1000);
+                  }
 
 
                 </script>
 {% endfor %}
-
+          <form action="/remove" method="post">
           <button class="btn4" type="submit">Remove Selected tasks</button>
-          <button class="btn4" type="submit">Complete Selected tasks</button>
+
           </form>
       <br><br><br>
 
