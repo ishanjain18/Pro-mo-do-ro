@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## PROMODORO
 
 You can use the [editor on GitHub](https://github.com/ishanjain18/Pomodoro/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
