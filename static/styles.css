@@ -8,25 +8,31 @@ body{
   font-family: "Ubuntu";
   text-align:center;
   overflow-x:hidden;
-
-
-
-
+  overflow-y:scroll;
 }
+
+html{
+  font-family: "Ubuntu";
+}
+
 h2{
 
-  font-family:"Montserrat";
-  color:#aacfcf;
+  font-family:"Ubuntu";
+  color:#093A3E;
   font-weight:bold;
   font-size:3rem;
 
 }
 
-
+.sad{
+  padding-right:53%;
+}
 h3{
-  font-family:"Indie Flower";
-  color:#aacfcf;
+  font-family:"Ubuntu";
+  color:#093A3E;
   font-size:1.5em;
+  display: inline-block;
+  white-space:nowrap;
 
 }
 
@@ -44,6 +50,10 @@ h3{
 
 .bigbrain{
   padding-top:50px;
+  background-image:url(oogabooga.jpg);
+  background-size:cover;
+  background-position:center;
+  position:relative;
 }
 
  .fa{
@@ -109,37 +119,51 @@ h3{
 
 
 .btn2{
-  background-color: #679b9b;
+  background-color:#DE5E5B;
   color: white;
-  border: 2px solid #679b9b;
+  border: 2px solid #DE5E5B;
   transition-duration: 0.4s;
   border-radius:15px;
+
+
 }
 
 .btn2:hover{
    background-color: white;
-   color:#679b9b;
+   color:#DE5E5B;
 }
 
 .btn4{
   margin-top:1%;
 }
-.btn3,.btn4{
+.btn3{
   transition-duration: 0.4s;
-  background-color: white;
-  color:white;
-   border: 2px solid #ffb6b6;
-   border-radius:15px;
-}
-
-.btn3:hover{
   background-color: #ffb6b6;
-  color: white;
+  color:white;
+   border: 2px #ffb6b6;
+   border-radius:15px;
+   height:35px;
+
+}
+.btn4{
+   width:220px;
+   font-size:18px;
+   transition-duration: 0.4s;
+   background-color:#F0544F;
+   color:white;
+   border: 2px #F0544F;
+   border-radius:15px;
+   height:35px;
+
+}
+.btn3:hover{
+  background-color:white;
+  color: #ffb6b6;
 }
 
 .btn4:hover{
-  background-color: #ffb6b6;
-  color: white;
+  background-color: white;
+  color:#F0544F;
 }
 
 
@@ -166,21 +190,26 @@ h1
   padding:2% 7%;
 }
 .colored-section{
-  background-color: #ffb6b6;
+
+  background-color:#ffb6b6;
+
+
+}
+
+.back
+ {background-image: url(pg1bg.jpg);/*reduced size of image*/
+  background-size:cover;
+  background-position: center;
+  position: relative;
   color:#fde2e2;
 
 }
 /*The annoying section*/
 .green{
-   background-image: url(page2bg.jpg);
-
-
-
+   background-image: url(page3bg.jpg);/*reduced size of image*/
+   background-size:cover;
   background-position: center;
-
-
   position: relative;
-
   font-size:5em;
   font-family:"Montserrat";
   font-weight:bold;
@@ -205,13 +234,16 @@ h1
     font-size:2rem;
     padding-top:20%;
   }
+  .carousel-item{
+    color:#ffcc00;
+  }
 
   .hold{
-   margin-top:200%;
+   margin-top:230%;
   }
 
   .lolman{
-    background-color:#ffcc00;
+    background-color:#8D021F;
    z-index:1;
   }
 
@@ -227,7 +259,16 @@ h1
   font-size:2.5em;
   text-align:center;
   padding:3em;
+  background-color:#FF7F50;
 
+
+  background-image: url(page2bg.jpg);
+  background-size:cover;
+
+  background-position: center;
+
+  background-repeat: no-repeat;
+  position: relative;
 
 }
 
@@ -268,23 +309,37 @@ div2,div3{
 
 /*Table styling*/
 
+th{
+  font-size:1.8rem;
+}
+
+.fire{
+  background-color:#ED7B84;
+}
+
+.noob{
+  font-size:2rem;
+}
+
 
 .content-table{
   border-collapse:collapse;
   font-size:0.9em;
-  width:100%;
+  width:90%;
   border-radius:5px 5px 0 0;
   overflow:hidden;
   box-shadow:0 0 20px rgba(0,0,0,0.15);
+  margin-left:5%;
 
 
 }
 
 .content-table thead tr{
-  background-color:#679b9b;
+  background-color:#F0544F;
   color:#ffffff;
   text-align:left;
   font-weight:bold;
+  height:50px;
 }
 
 .content-table th {
@@ -302,7 +357,7 @@ div2,div3{
   background-color:#f3f3f3;
 }
 .ooga:last-of-type{
-  border-bottom: 2px solid #679b9b;
+  border-bottom: 2px solid #DE5E5B;
 }
 
 
@@ -371,9 +426,7 @@ div2,div3{
   margin-right:1%;
 }
 
-.lax{
-  padding-top:0%;
-}
+
 
 
 .navbar{
@@ -382,7 +435,7 @@ div2,div3{
 }
 .navbar-brand {
   font-family: "Ubuntu";
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold;
   padding-top:0%;
 
@@ -403,7 +456,11 @@ div2,div3{
   font-family:"Ubuntu";
 }
 
-
+.dandia{
+ padding-right:50%;
+ white-space:nowrap;
+ overflow-x:auto;
+}
 
 
 .input-field{
@@ -416,6 +473,8 @@ div2,div3{
 .input-field2{
   border-radius:15px;
   border: 3px solid pink;
+  margin-left:0%;
+  font-family:"Ubuntu";
 
 
 }

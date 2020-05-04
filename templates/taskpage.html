@@ -6,24 +6,24 @@
 
 {% block main %}
   <section class="bigbrain">
-    <div>
-      <h3>Add a new Task:</h3>
+    <div class="dandia">
+
         <form action="/add" method="post">
-          <input class="input-field2" name="task" type="text" placeholder="Enter a Task">
+          <h2>ADD A NEW TASK</h2><br><input class="input-field2" name="task" type="text" size="30" style="height:35px;" placeholder="Enter a Task">
           <button class="btn3" type="submit">Add Task</button>
         </form>
     </div>
-    <br>
+    <br><br><br><br>
 
 
 
+<audio id="sound" src="static/sound.mp3" preload="auto"></audio>
 
 
 
+<form action="/remove" method="post">
 
-
-
-  <h2>TASKS</h2>
+  <h2 class="sad">TASK LIST</h2>
       <br>
       <div>
 
@@ -42,7 +42,7 @@
               <tbody class="ooga">
                 <tr>
                   <td><input type="checkbox" name="check{{index}}"></td>
-                  <td><span name="removed{{index}}">{{ task }}</span></td>
+                  <td><span style="font-size: 20px;" name="removed{{index}}">{{ task }}</span></td>
                   <td><button class="btn2" id="pbtn{{index}}" type="button" name="pomostart{{index}}" onclick="pomoactivate{{index}}()">Start Pomodoro</td>
                   <td><button class="btn2" id="bbtn{{index}}" type="button" name="breakstart{{index}}"  onclick="breakactivate{{index}}()">Start Break</td>
                   <td><p id="timer{{index}}">--</p></td>
@@ -57,7 +57,7 @@
                   function pomoactivate{{i}}()
                   {
                       var d = new Date();
-                      var countDownDate = d.getTime() + 1501000;
+                      var countDownDate = d.getTime() + 1502000;
                       var x;
                       document.getElementById("bbtn{{i}}").disabled = true;
                       document.getElementById("pbtn{{i}}").disabled = true;
@@ -90,12 +90,14 @@
                                   document.getElementById("timer{{i}}").innerHTML = "COMPLETED";
                                   document.getElementById("bbtn{{i}}").disabled = false;
                                   document.getElementById("pbtn{{i}}").disabled = false;
-                                  let src = '/static/sound.mp3';
-                                  let audio = new Audio(src);
-                                  audio.play();
-                                  alert("PomoDoro Complete! Start Another!")
+
+                                  document.getElementById('sound').play();
+                                  alert("PomoDoro Complete! Start Another!");
+
                               }
+
                                 }, 1000);
+
                             }
 
 
@@ -130,9 +132,7 @@
                           if (distance < 0) {
                               clearInterval(x);
                               document.getElementById("timer{{i}}").innerHTML = "COMPLETED";
-                              let src = '/static/sound.mp3';
-                              let audio = new Audio(src);
-                              audio.play();
+                              document.getElementById('sound').play();
                               alert("Break Complete!")
                           }
                       }, 1000);
@@ -141,14 +141,48 @@
 
                 </script>
 {% endfor %}
-          <form action="/remove" method="post">
+         <div class="dandia2">
           <button class="btn4" type="submit">Remove Selected tasks</button>
-
+         </div>
           </form>
       <br><br><br>
 
       </div>
   </section>
+<section class="fire">
+<div id="testimonial-carousel" class="carousel slide" data-ride="false">
+      <div class="carousel-inner">
 
+
+        <div class="carousel-item active container-fluid">
+            <em class="noob">Step I</em>
+          <h2 class="testimonial-text">Add A Task To The List.</h2>
+        </div>
+
+
+        <div class="carousel-item container-fluid">
+            <em class="noob">Step II</em>
+          <h2 class="testimonial-text">Start A PomoDoro Session for 25 mins, Upon Completion, Start Break of 5 mins.</h2>
+        </div>
+
+        <div class="carousel-item container-fluid">
+            <em class="noob">Step III</em>
+          <h2 class="testimonial-text">Repeat Step II Four times or as per your convenience, take a longer Break of 30 mins.</h2>
+        </div>
+
+        <div class="carousel-item container-fluid">
+            <em class="noob">Step IV</em>
+          <h2 class="testimonial-text">Remove Tasks As You Complete Them, Add New Tasks, Focus like a boss :D</h2>
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+      </a>
+      <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+      </a>
+    </div>
+    </section>
 
 {% endblock %}

@@ -146,8 +146,9 @@ def remove():
         for i in range(session["taskcount"]):
 
             foo = "check"+str(i)
-            bar = "removed"+str(i)
+            #bar = "removed"+str(i)
             if request.form.get(foo):
+
                 db.execute("DELETE FROM tasks WHERE task=:task;", task=session["tasks"][i])
 
     return redirect("/taskpage")
