@@ -9,6 +9,9 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required
 
+import os
+import sqlalchemy
+
 app = Flask(__name__)
 
 app.config["TEMPLATES_AUTO_RELOAD"] = True
@@ -25,7 +28,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-db = SQL("postgres://pqdfdtgpyopnqs:7c106e253e9298ffdded4d4f1df9b548c2dfa6c0ff94fd712a0ff026f6664dcf@ec2-52-203-160-194.compute-1.amazonaws.com:5432/d9e9fc367ppama")
+db = SQL("sqlite:///users.db")
 
 @app.route("/")
 def index():
@@ -176,5 +179,6 @@ for code in default_exceptions:
 
 
 if __name__ == '__main__':
-    app.debug = True
-    app.run(host = '0.0.0.0', port = 5000)
+ app.debug = True
+ port = int(os.environ.get(“PORT”, 5000))
+ app.run(host=’0.0.0.0', port=port)
