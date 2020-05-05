@@ -8,7 +8,7 @@ from werkzeug.exceptions import default_exceptions, HTTPException, InternalServe
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import apology, login_required
-
+import random
 import os
 import sqlalchemy
 
@@ -28,7 +28,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-db = SQL("postgres://qtgrpuxrbbpbrx:50606d742ec397ead07a79c6430777582b23330d72a3e93fa29ca99332c14ac3@ec2-18-233-137-77.compute-1.amazonaws.com:5432/d1marvl2ck1udu")
+db = SQL("")
 
 @app.route("/")
 def index():
@@ -99,8 +99,9 @@ def register():
             return apology("Passwords do not match.", 400)
 
         hsh = generate_password_hash(request.form.get("password"))
+        r = random.randint(0, 124823734)
 
-        db.execute("INSERT INTO users(username, hash) VALUES (:username, :hasher);", username=request.form.get("username"), hasher=hsh)
+        db.execute("INSERT INTO users(id, username, hash) VALUES (:id1, :username, :hasher);", id1=r, username=request.form.get("username"), hasher=hsh)
 
 
         # Redirect user to login page
