@@ -11,7 +11,6 @@ from helpers import apology, login_required
 import random
 import os
 import sqlalchemy
-import temp
 
 app = Flask(__name__)
 
@@ -24,9 +23,10 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-app.config["SESSION_FILE_DIR"] = temp.tempdir()
+app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
+app.config["SECRET_KEY"] = "3d6f45a5fc12445dbac2f59c3b6c7cb1"
 Session(app)
 
 db = SQL("postgres://xsueqmudbewnvj:f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673@ec2-18-210-214-86.compute-1.amazonaws.com:5432/ddhbjai8ie6pja")
