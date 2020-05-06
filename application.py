@@ -194,7 +194,6 @@ def register():
 
 
 @app.route("/taskpage")
-@login_required
 def taskpage():
 
 
