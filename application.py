@@ -26,7 +26,7 @@ def after_request(response):
 app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
-app.config["SECRET_KEY"] = "3d6f45a5fc12445dbac2f59c3b6c7cb1"
+app.config["SECRET_KEY"] = "3d6f45a5fc12445dbaae552853j34h50342"
 Session(app)
 
 db = SQL("postgres://xsueqmudbewnvj:f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673@ec2-18-210-214-86.compute-1.amazonaws.com:5432/ddhbjai8ie6pja")
@@ -54,6 +54,10 @@ def login():
 
         # Query database for username
         rows = db.execute("SELECT * FROM users WHERE username = :username", username=request.form.get("username"))
+
+        if not rows:
+            return apology("you are dum")
+
 
         # Ensure username exists and password is correct
         if len(rows) != 1 or not check_password_hash(rows[0]["hash"], request.form.get("password")):
