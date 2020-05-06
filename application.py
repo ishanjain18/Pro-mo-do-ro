@@ -132,9 +132,58 @@ def register():
         b = db.execute("INSERT INTO users(id, username, hash) VALUES (:id1, :username, :hasher);", id1=r, username=request.form.get("username"), hasher=hsh)
 
 
+
+
+
+        try:
+
+
+           connection = psycopg2.connect(user = "xsueqmudbewnvj",
+                                  password = "f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673",
+                                  host = "ec2-18-210-214-86.compute-1.amazonaws.com",
+                                  port = "5432",
+                                  database = "ddhbjai8ie6pja")
+
+           cursor = connection.cursor()
+
+           postgres_insert_query = """ INSERT INTO users (id, username, hash) VALUES (%s,%s,%s)"""
+           record_to_insert = (r, request.form.get("username"), hsh)
+           cursor.execute(postgres_insert_query, record_to_insert)
+
+           connection.commit()
+           count = cursor.rowcount
+           print (count, "Record inserted successfully into users table")
+
+        except (Exception, psycopg2.Error) as error :
+            if(connection):
+                print("Failed to insert record into users table", error)
+
+        finally:
+            #closing database connection.
+            if(connection):
+                cursor.close()
+                connection.close()
+                print("PostgreSQL connection is closed")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         a = db.execute("SELECT * FROM users;")
         print(a)
-        print(b)
+
         # Redirect user to login page
         return redirect("/login")
 
