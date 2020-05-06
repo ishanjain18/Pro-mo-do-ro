@@ -209,7 +209,7 @@ def taskpage():
         tasks.append(i["task"])
 
     count = len(tasks)
-    session["taskcount"] = counts
+    session["taskcount"] = count
 
     tasks = enumerate(tasks)
 
