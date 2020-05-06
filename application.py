@@ -213,7 +213,6 @@ def taskpage():
     return render_template("taskpage.html", tasks=tasks, count=session["taskcount"],)
 
 @app.route("/add", methods=["GET","POST"])
-@login_required
 def add():
     if request.method == "POST":
         task = request.form.get("task")
@@ -226,7 +225,6 @@ def add():
         return redirect("/taskpage")
 
 @app.route("/remove", methods=["GET", "POST"])
-@login_required
 def remove():
     if request.method == "POST":
 
