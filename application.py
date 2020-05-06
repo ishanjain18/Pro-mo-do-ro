@@ -11,6 +11,7 @@ from helpers import apology, login_required
 import random
 import os
 from flask_sqlalchemy import SQLAlchemy
+from datetime import timedelta
 
 app = Flask(__name__)
 
@@ -24,9 +25,15 @@ def after_request(response):
     return response
 
 app.config["SESSION_FILE_DIR"] = mkdtemp()
-app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SECRET_KEY"] = "3d6f45a5fc12445dbaae552853j34h50342"
+
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=5)
+
+# The maximum number of items the session stores
+# before it starts deleting some, default 500
+app.config['SESSION_FILE_THRESHOLD'] = 1500
 
 import psycopg2
 try:
