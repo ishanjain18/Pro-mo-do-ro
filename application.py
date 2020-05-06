@@ -270,8 +270,37 @@ def remove():
             foo = "check"+str(i)
             #bar = "removed"+str(i)
             if request.form.get(foo):
+                try:
 
-                db.execute("DELETE FROM tasks WHERE task=:task;", task=session["tasks"][i])
+
+                   connection = psycopg2.connect(user = "xsueqmudbewnvj",
+                                          password = "f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673",
+                                          host = "ec2-18-210-214-86.compute-1.amazonaws.com",
+                                          port = "5432",
+                                          database = "ddhbjai8ie6pja")
+
+                   cursor = connection.cursor()
+
+                   postgres_delete_query = """ DELETE FROM tasks WHERE task=%s;"""
+
+                   cursor.execute(postgres_delete_query, (session["tasks"][i],))
+
+                   connection.commit()
+                   count = cursor.rowcount
+                   print (count, "Record inserted successfully into tasks table")
+
+                except (Exception, psycopg2.Error) as error :
+                    if(connection):
+                        print("Failed to insert record into tasks table", error)
+
+                finally:
+                    #closing database connection.
+                    if(connection):
+                        cursor.close()
+                        connection.close()
+                        print("PostgreSQL connection is closed")
+
+                #db.execute("DELETE FROM tasks WHERE task=:task;", task=session["tasks"][i])
 
         return redirect("/taskpage")
 
