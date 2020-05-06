@@ -28,6 +28,7 @@ app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SECRET_KEY"] = "3d6f45a5fc12445dbaae552853j34h50342"
+app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=5)
 
 
 
