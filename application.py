@@ -251,9 +251,6 @@ def add():
                 cursor.close()
                 connection.close()
                 print("PostgreSQL connection is closed")
-
-
-
         return redirect("/taskpage")
 
 @app.route("/remove", methods=["GET", "POST"])
