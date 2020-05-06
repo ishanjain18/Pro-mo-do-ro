@@ -11,6 +11,7 @@ from helpers import apology, login_required
 import random
 import os
 import sqlalchemy
+import temp
 
 app = Flask(__name__)
 
@@ -23,7 +24,7 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-app.config["SESSION_FILE_DIR"] = mkdtemp()
+app.config["SESSION_FILE_DIR"] = temp.tempdir()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
@@ -101,8 +102,7 @@ def register():
         hsh = generate_password_hash(request.form.get("password"))
         r = random.randint(0, 124823734)
 
-        if db.execute("INSERT INTO users(id, username, hash) VALUES (:id1, :username, :hasher);", id1=r, username=request.form.get("username"), hasher=hsh) == 0:
-            return apology("not inserting", 403)
+        db.execute("INSERT INTO users(id, username, hash) VALUES (:id1, :username, :hasher);", id1=r, username=request.form.get("username"), hasher=hsh)
 
 
         # Redirect user to login page
