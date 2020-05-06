@@ -266,7 +266,7 @@ def remove():
 
                 db.execute("DELETE FROM tasks WHERE task=:task;", task=session["tasks"][i])
 
-    return redirect("/taskpage")
+        return redirect("/taskpage")
 
 @app.route("/logout")
 def logout():
