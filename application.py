@@ -101,8 +101,8 @@ def register():
         hsh = generate_password_hash(request.form.get("password"))
         r = random.randint(0, 124823734)
 
-        if db.execute("INSERT INTO users(id, username, hash) VALUES (:id1, :username, :hasher);", id1=r, username=request.form.get("username"), hasher=hsh):
-            return apology("inserted, but not really", 403)
+        if db.execute("INSERT INTO users(id, username, hash) VALUES (:id1, :username, :hasher);", id1=r, username=request.form.get("username"), hasher=hsh) == 0:
+            return apology("not inserting", 403)
 
 
         # Redirect user to login page
