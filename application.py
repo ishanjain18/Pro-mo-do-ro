@@ -10,7 +10,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from helpers import apology, login_required
 import random
 import os
-import sqlalchemy
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
@@ -27,6 +27,33 @@ app.config["SESSION_FILE_DIR"] = mkdtemp()
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SECRET_KEY"] = "3d6f45a5fc12445dbaae552853j34h50342"
+
+import psycopg2
+try:
+    connection = psycopg2.connect(user = "xsueqmudbewnvj",
+                                  password = "f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673",
+                                  host = "ec2-18-210-214-86.compute-1.amazonaws.com",
+                                  port = "5432",
+                                  database = "ddhbjai8ie6pja")
+
+    cursor = connection.cursor()
+    # Print PostgreSQL Connection properties
+    print ( connection.get_dsn_parameters(),"\n")
+
+    # Print PostgreSQL version
+    cursor.execute("SELECT version();")
+    record = cursor.fetchone()
+    print("You are connected to - ", record,"\n")
+
+except (Exception, psycopg2.Error) as error :
+    print ("Error while connecting to PostgreSQL", error)
+finally:
+    #closing database connection.
+        if(connection):
+            cursor.close()
+            connection.close()
+            print("PostgreSQL connection is closed")
+
 Session(app)
 
 db = SQL("postgres://xsueqmudbewnvj:f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673@ec2-18-210-214-86.compute-1.amazonaws.com:5432/ddhbjai8ie6pja")
