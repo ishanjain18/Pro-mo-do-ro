@@ -201,6 +201,7 @@ def register():
 
 
 @app.route("/taskpage")
+@login_required
 def taskpage():
 
 
@@ -220,6 +221,7 @@ def taskpage():
     return render_template("taskpage.html", tasks=tasks, count=session["taskcount"],)
 
 @app.route("/add", methods=["GET","POST"])
+@login_required
 def add():
 
         task = request.form.get("task")
