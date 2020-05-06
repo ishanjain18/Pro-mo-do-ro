@@ -209,11 +209,12 @@ def taskpage():
         tasks.append(i["task"])
 
     count = len(tasks)
+    session["taskcount"] = counts
 
     tasks = enumerate(tasks)
 
 
-    return render_template("taskpage.html", tasks=tasks, count=count,)
+    return render_template("taskpage.html", tasks=tasks, count=count)
 
 @app.route("/add", methods=["GET","POST"])
 @login_required
