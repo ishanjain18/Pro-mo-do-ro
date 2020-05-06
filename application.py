@@ -193,9 +193,10 @@ def register():
 
 
 
-@app.route("/taskpage", methods=["GET","POST"])
+@app.route("/taskpage")
 @login_required
 def taskpage():
+
 
     """define tasks as a select query from the tasks table
         containing the tasks in a list format"""
