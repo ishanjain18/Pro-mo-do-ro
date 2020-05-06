@@ -103,7 +103,7 @@ def register():
         r = random.randint(0, 124823734)
 
         db.execute("INSERT INTO users(id, username, hash) VALUES (:id1, :username, :hasher);", id1=r, username=request.form.get("username"), hasher=hsh)
-
+        db.execute("COMMIT;")
 
         # Redirect user to login page
         return redirect("/login")
