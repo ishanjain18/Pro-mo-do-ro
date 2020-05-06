@@ -24,7 +24,7 @@ def after_request(response):
     return response
 
 app.config["SESSION_FILE_DIR"] = mkdtemp()
-app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_PERMANENT"] = True
 app.config["SESSION_TYPE"] = "filesystem"
 app.config["SECRET_KEY"] = "3d6f45a5fc12445dbaae552853j34h50342"
 
@@ -220,6 +220,9 @@ def add():
         if not task:
             return apology("Enter a Task")
         db.execute("INSERT INTO tasks(username, task) VALUES (:username, :task);", username=session["username"], task=task)
+
+
+
         return redirect("/taskpage")
 
 @app.route("/remove", methods=["GET", "POST"])
