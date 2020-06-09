@@ -34,11 +34,14 @@ app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=5)
 
 import psycopg2
 try:
-    connection = psycopg2.connect(user = "xsueqmudbewnvj",
-                                  password = "f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673",
-                                  host = "ec2-18-210-214-86.compute-1.amazonaws.com",
+    connection = psycopg2.connect(user = "iwaidnjbhtfzfe",
+                                  password = "f6b90eafd51e0ec65b1aea2c121d953e8c3f5dd41c2ca30d79f9c7cc5f62e926",
+                                  host = "ec2-34-225-162-157.compute-1.amazonaws.com",
                                   port = "5432",
-                                  database = "ddhbjai8ie6pja")
+                                  database = "dg5kliec8asc5")
+
+
+
 
     cursor = connection.cursor()
     # Print PostgreSQL Connection properties
@@ -60,7 +63,7 @@ finally:
 
 Session(app)
 
-db = SQL("postgres://xsueqmudbewnvj:f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673@ec2-18-210-214-86.compute-1.amazonaws.com:5432/ddhbjai8ie6pja")
+db = SQL("postgres://iwaidnjbhtfzfe:f6b90eafd51e0ec65b1aea2c121d953e8c3f5dd41c2ca30d79f9c7cc5f62e926@ec2-34-225-162-157.compute-1.amazonaws.com:5432/dg5kliec8asc5")
 
 @app.route("/")
 def index():
@@ -142,11 +145,11 @@ def register():
         try:
 
 
-           connection = psycopg2.connect(user = "xsueqmudbewnvj",
-                                  password = "f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673",
-                                  host = "ec2-18-210-214-86.compute-1.amazonaws.com",
+           connection = psycopg2.connect(user = "iwaidnjbhtfzfe",
+                                  password = "f6b90eafd51e0ec65b1aea2c121d953e8c3f5dd41c2ca30d79f9c7cc5f62e926",
+                                  host = "ec2-34-225-162-157.compute-1.amazonaws.com",
                                   port = "5432",
-                                  database = "ddhbjai8ie6pja")
+                                  database = "dg5kliec8asc5")
 
            cursor = connection.cursor()
 
@@ -231,11 +234,11 @@ def add():
             try:
 
 
-               connection = psycopg2.connect(user = "xsueqmudbewnvj",
-                                      password = "f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673",
-                                      host = "ec2-18-210-214-86.compute-1.amazonaws.com",
-                                      port = "5432",
-                                      database = "ddhbjai8ie6pja")
+               connection = psycopg2.connect(user = "iwaidnjbhtfzfe",
+                                  password = "f6b90eafd51e0ec65b1aea2c121d953e8c3f5dd41c2ca30d79f9c7cc5f62e926",
+                                  host = "ec2-34-225-162-157.compute-1.amazonaws.com",
+                                  port = "5432",
+                                  database = "dg5kliec8asc5")
 
                cursor = connection.cursor()
 
@@ -273,11 +276,11 @@ def remove():
                 try:
 
 
-                   connection = psycopg2.connect(user = "xsueqmudbewnvj",
-                                          password = "f430101ffd05a0cbc0a59f9faf9e0c1e2aa666814f3d82a60fa16b1b2e668673",
-                                          host = "ec2-18-210-214-86.compute-1.amazonaws.com",
-                                          port = "5432",
-                                          database = "ddhbjai8ie6pja")
+                   connection = psycopg2.connect(user = "iwaidnjbhtfzfe",
+                                  password = "f6b90eafd51e0ec65b1aea2c121d953e8c3f5dd41c2ca30d79f9c7cc5f62e926",
+                                  host = "ec2-34-225-162-157.compute-1.amazonaws.com",
+                                  port = "5432",
+                                  database = "dg5kliec8asc5")
 
                    cursor = connection.cursor()
 
